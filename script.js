@@ -2,7 +2,9 @@
 const apiKey = '6VKbepI4RXeUj4buc714kONQZ4Nd9CKtxZOjmk3M';
 
  function getData() {
-  const stateCode = $("#js-parks-name").val();
+  let stateCode = $("#js-parks-name").val();
+  stateCode  = stateCode.replace(/\s+/g,'')
+  placeholder="comma separated state codes"
   const maxResults = $("#js-max-results").val();
   const url = `https://developer.nps.gov/api/v1/parks?api_key=${apiKey}&limit=${maxResults}&stateCode=${stateCode}`;
   fetch(url)
@@ -10,6 +12,7 @@ const apiKey = '6VKbepI4RXeUj4buc714kONQZ4Nd9CKtxZOjmk3M';
     .then(responseJson => {
       displayResults(responseJson)
     }).catch(error => alert('Something went wrong. Try again later.'));
+    
 }
 
 function displayResults(responseJson){
@@ -48,5 +51,5 @@ function watchForm() {
     getData()
   });
 }
-  
+ 
 $(watchForm);
