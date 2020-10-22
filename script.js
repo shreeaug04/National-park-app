@@ -4,7 +4,7 @@ const apiKey = '6VKbepI4RXeUj4buc714kONQZ4Nd9CKtxZOjmk3M';
  function getData() {
   let stateCode = $("#js-parks-name").val();
   stateCode  = stateCode.replace(/\s+/g,'')
-  placeholder="comma separated state codes"
+  
   const maxResults = $("#js-max-results").val();
   const url = `https://developer.nps.gov/api/v1/parks?api_key=${apiKey}&limit=${maxResults}&stateCode=${stateCode}`;
   fetch(url)
